@@ -1,6 +1,8 @@
-import {createQueue, createWorker, randomMessage} from "../commons";
+import {createQueue, createWorker, Message, randomMessage} from "../commons";
+import {Job} from "bullmq";
 
 const INTERVAL = 2 * 1000;
+
 const queue = createQueue("queue")
 
 setInterval(async () => {
@@ -10,7 +12,7 @@ setInterval(async () => {
 }, INTERVAL);
 
 
-const worker = createWorker("queue", async (job) => {
-    console.log("worker processing", job.asJSON());
+const worker = createWorker("queue", async (job: Job<Message, void>) => {
+    console.log("worker processing", job.name);
     return "ok"
 });

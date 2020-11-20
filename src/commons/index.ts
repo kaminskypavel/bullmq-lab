@@ -7,7 +7,7 @@ export type Message = {
     createdAt: Date
 }
 
-export const createQueue = (queueName: string) => new Queue(queueName);
+export const createQueue = (queueName: string) => new Queue<Message>(queueName);
 
 export const createWorker = (queueName: string, processor: Processor, opts: WorkerOptions = {}) =>
     new Worker<Message>(queueName, processor, opts);
