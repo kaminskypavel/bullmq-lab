@@ -1,0 +1,24 @@
+{
+  "name": "bullmq-lab",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "author": "Pavel 'PK' Kaminsky",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev --watch --respawn --rs ./src/01-simple-queue/index.ts"
+  },
+  "dependencies": {
+    "bullmq": "^1.10.0",
+    "faker": "^5.1.0",
+    "flat": "^5.0.2",
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "@types/faker": "^5.1.4",
+    "@types/flat": "^5.0.1",
+    "@types/lodash": "^4.14.165",
+    "@types/node": "^14.14.8",
+    "ts-node-dev": "^1.0.0",
+    "typescript": "^4.0.5"
+  }
+}
