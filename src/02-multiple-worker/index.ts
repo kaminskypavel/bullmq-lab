@@ -5,7 +5,6 @@ import {Job, QueueEvents} from "bullmq";
 const INTERVAL = 5 * 10;
 const QUEUE_NAME = "queue-02"
 
-
 const queue = createQueue(QUEUE_NAME)
 const queueEvents = new QueueEvents(QUEUE_NAME)
 

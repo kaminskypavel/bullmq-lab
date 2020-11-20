@@ -1,7 +1,6 @@
 import {createQueue, createWorker, Message, randomMessage} from "../commons";
 import {Job, QueueEvents, QueueScheduler} from "bullmq";
 
-
 const QUEUE_NAME = "queue-03"
 
 const queue = createQueue(QUEUE_NAME)
