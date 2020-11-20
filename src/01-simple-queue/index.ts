@@ -3,7 +3,7 @@ import {Job} from "bullmq";
 
 const INTERVAL = 2 * 1000;
 
-const queue = createQueue("queue")
+const queue = createQueue("queue-01")
 
 setInterval(async () => {
     const message = randomMessage();
