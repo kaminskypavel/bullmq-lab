@@ -5,7 +5,7 @@
   "author": "Pavel 'PK' Kaminsky",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --watch --respawn --rs ./src/01-simple-queue/index.ts"
+    "dev": "ts-node-dev --watch --respawn --rs ./src/02-multiple-worker/index.ts"
   },
   "dependencies": {
     "bullmq": "^1.10.0",
