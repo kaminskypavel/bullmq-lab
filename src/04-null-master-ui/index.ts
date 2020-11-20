@@ -3,9 +3,9 @@
 import express from "express";
 import {Job} from "bullmq";
 import open from "open";
-// @ts-ignore
-import bullMaster from "bull-master";
 import {createQueue, createWorker, Message, randomMessage} from "../commons";
+
+const bullMaster = require("bull-master");
 
 
 const INTERVAL = 0.2 * 1000;
@@ -21,7 +21,7 @@ const bullMasterApp = bullMaster({
 
 app.use('/', bullMasterApp)
 
-const worker1 = createWorker(QUEUE_NAME, async (job: Job<Message>) => {
+const worker = createWorker(QUEUE_NAME, async (job: Job<Message>) => {
     if (Math.random() < 0.5)
         return "worker 1 : " + job.name
     else
