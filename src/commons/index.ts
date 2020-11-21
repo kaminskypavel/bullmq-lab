@@ -37,3 +37,8 @@ export const attachUI = (queue: Queue) => {
         // await open('http://localhost:8080', {wait: true});
     });
 }
+
+
+export const sleep = (milliseconds:number) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+}

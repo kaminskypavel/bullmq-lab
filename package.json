@@ -5,7 +5,7 @@
   "author": "Pavel 'PK' Kaminsky",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --watch --respawn --rs src/04-null-master-ui/index.ts"
+    "dev": "ts-node-dev --watch --respawn --rs src/05-memory-explode/index.ts"
   },
   "dependencies": {
     "@types/express": "^4.17.9",
