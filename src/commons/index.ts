@@ -12,7 +12,7 @@ export type Message = {
 
 export const createQueue = (queueName: string, opts?: QueueOptions) => {
     const queue = new Queue<Message>(queueName, opts)
-    attachUI(queue);
+    // attachUI(queue);
     return queue;
 };
 

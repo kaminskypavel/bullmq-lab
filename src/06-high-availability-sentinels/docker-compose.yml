@@ -1,0 +1,51 @@
+version: "3.8"
+
+# docker-compose up --scale redis-sentinel=3 -d
+
+# https://docs.docker.com/compose/compose-file/#ports
+# When mapping ports in the HOST:CONTAINER format,
+# you may experience erroneous results when using a container port lower than 60,
+# because YAML parses numbers in the format xx:yy as a base-60 value.
+# For this reason, we recommend always explicitly specifying your port mappings as strings.
+
+networks:
+  redis-app-tier:
+    driver: bridge
+
+services:
+  redis:
+    image: "bitnami/redis:latest"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+      - REDIS_PASSWORD=str0ng_passw0rd
+    networks:
+      - redis-app-tier
+    ports:
+      - "6379:6379"
+
+
+  redis-slave:
+    image: "bitnami/redis:latest"
+    environment:
+      - REDIS_REPLICATION_MODE=slave
+      - REDIS_MASTER_HOST=redis
+      - REDIS_MASTER_PASSWORD=str0ng_passw0rd
+      - REDIS_PASSWORD=str0ng_passw0rd
+    ports:
+      - "6380:6379"
+    depends_on:
+      - redis
+    networks:
+      - redis-app-tier
+
+  redis-sentinel:
+    image: "bitnami/redis-sentinel:latest"
+    environment:
+      - REDIS_MASTER_PASSWORD=str0ng_passw0rd
+    depends_on:
+      - redis
+      - redis-slave
+    ports:
+      - "26379-26381:26379"
+    networks:
+      - redis-app-tier
